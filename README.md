@@ -35,7 +35,7 @@ The `#Animate` view must be placed directly under e.g. `#famousEach` or `#famous
 The enter/leave helpers must return a function which is invoked with a `StateModifier`, which allows all kind of complex transitions.
 The enter/leave-functions has a 2nd param which is the done-handler which must be invoked at transition end.
 
-# Global transitions
+## Global transitions
 For global transitions the preferred approach is to register transitions by name.
 Since most complex transition have multiple params e.g. durations, force etc. it's helpful to
 create to create a transition-factory for your transition and bind it to a meaningful name.
