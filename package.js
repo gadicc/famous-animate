@@ -1,6 +1,6 @@
 Package.describe({
 	summary: 'provides #Animate view',
-  version : "0.0.3",
+  version : "0.0.4",
   name : 'mjn:famous-animate'
 });
 
