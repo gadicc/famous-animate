@@ -1,6 +1,6 @@
 Package.describe({
 	summary: 'provides #Animate view',
-  version : "0.0.6",
+  version : "0.0.7",
   name : 'mjn:famous-animate',
   git : 'https://github.com/mj-networks/famous-animate.git'
 });

@@ -1,3 +1,5 @@
+var globalTransitions = {};
+
 AnimateView = function AnimateView(options) {
   famous.core.View.call(this, options);
 
@@ -42,23 +44,51 @@ FView.ready(function (require) {
 
 	    var outer = this.view.outer;
 
-	    if (data.onEnter) {
-		    check(data.onEnter, Function);
-		    data.onEnter(outer);
+			var onEnter = data.onEnter;
+      if (onEnter) {
+				var t;
+				if (Match.test(onEnter, String)) {
+					t = globalTransitions[name];
+					if (!t) {
+						throw new Error('No global transitions \''+onEnter+'\'');
+					}
+				}
+				else {
+					check(onEnter, Function);
+					t = onEnter;
+				}
+		    t(outer);
 	    }
-	    if (data.onLeave) {
-		    check(data.onLeave, Function);
+			var onLeave = data.onLeave;
+      if (onLeave) {
+				var t;
+				if (Match.test(onEnter, String)) {
+					t = globalTransitions[name];
+					if (!t) {
+						throw new Error('No global transitions \''+onEnter+'\'');
+					}
+				}
+				else {
+					check(onLeave, Function);
+					t = onEnter;
+				}
 
 		    this.preventDestroy();
 		    var destroy = _.bind(this.destroy, this);
 
 		    this.onDestroy = function() {
-			    data.onLeave(outer, function () {
+			    t(outer, function () {
 				    destroy();
 			    });
 		    }
 	    }
     }
-
   });
 });
+
+FView.registerTransition = function (name, transition) {
+	check(name, String);
+	check(transition, Function);
+
+	globalTransitions[name] = transition;
+};
