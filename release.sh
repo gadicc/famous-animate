@@ -16,3 +16,4 @@ sed -i "s/version : \"$version\"/version : \"$newVersion\"/g" package.js
 git commit -m "${msg}" -a
 git push
 
+meteor publish
