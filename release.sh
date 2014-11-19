@@ -10,7 +10,7 @@ newVersion="$(echo ${version} | cut -d '.' -f 1-2).$(($minorVersion + 1))"
 echo "V: $version m: $minorVersion n:$newVersion"
 
 
-sed 's/version : "$version"/version : "$newVersion"/g' package.js
+sed "s/version : \"$version\"/version : \"$newVersion\"/g" package.js
 
 #spacejam -test-packages ./
 git commit -m "${msg}" -a
