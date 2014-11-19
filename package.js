@@ -22,12 +22,14 @@ Package.onUse(function (api) {
 });
 
 Package.onTest(function (api) {
-	api.use('mjn:famous-views-utils');
+	api.use('mjn:famous-animate');
   api.use('tinytest');
   api.use('test-helpers');
   api.use('templating');
   api.use('blaze');
   api.use('less');
+  api.use('spacejamio:sinon@1.10.3_1');
+  api.use('spacejamio:chai@1.9.2_2');
   api.use('gadicohen:famous-views@0.1.25',C);
 
   api.add_files([
