@@ -11,6 +11,7 @@ Tinytest.addAsync('Famous - #Animate - onEnter function called on first render',
 
 	Template.AnimateTests1.rendered = function() {
 		_.defer(function () {
+			test.equal(enterSpy.callCount, 1);
 			complete();
 		});
 	};
