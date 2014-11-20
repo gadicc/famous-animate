@@ -1,0 +1,33 @@
+<head>
+    <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+</head>
+
+<template name="famousInit">
+  {{>Letters}}
+</template>
+
+<template name="Letters">
+  {{#SequentialLayout size='[undefined, undefined]' direction='X'}}
+    {{#famousEach columns}}
+      {{>Letter}}
+    {{/famousEach}}
+  {{/SequentialLayout}}
+</template>
+
+<template name="Letter">
+  {{#Animate size='[200,undefined]' onEnter='in:crazy.fast' onLeave='out:crazy.fast'}}
+    {{#Surface class='letter' properties=letterStyle}}
+      {{>Letter_content}}
+    {{/Surface}}
+  {{/Animate}}
+</template>
+
+<template name="Letter_content">
+    <span>
+      {{name}}
+    </span>
+    <div>
+        <button class='add'>+</button>
+        <button class='remove'>-</button>
+    </div>
+</template>
