@@ -1,5 +1,6 @@
-// ------------------------------------
-
+/**
+ * need to include the source code here, until package mjn:fview-animate can be found by meteorpad -----------------
+ */
 var globalTransitions = {};
 
 AnimateView = function AnimateView(options) {
@@ -96,7 +97,11 @@ FView.registerTransition = function (name, transition) {
   globalTransitions[name] = transition;
 };
 
-//hh
+/**
+ * --------------------- example starts here -------------------------------------------
+ */
+
+//
 var columns = new Mongo.Collection(null);
 
 function randomColumn() {
