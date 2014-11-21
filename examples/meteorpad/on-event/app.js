@@ -47,44 +47,43 @@ FView.ready(function (require) {
 
     famousCreatedPost: function () {
       var data = Blaze.getData();
+      var transitionFn;
 
       var outer = this.view.outer;
 
       var onEnter = data.onEnter;
       if (onEnter) {
-        var t;
         if (Match.test(onEnter, String)) {
-          t = globalTransitions[onEnter];
-          if (!t) {
-            console.log(t);
+          transitionFn = globalTransitions[onEnter];
+          if (!transitionFn) {
+            console.log(transitionFn);
             throw new Error('No global transition \''+onEnter+'\'. Known are ' + _.keys(globalTransitions));
           }
         }
         else {
           check(onEnter, Function);
-          t = onEnter;
+          transitionFn = onEnter;
         }
-        t(outer, function(){});
+        transitionFn(outer, function(){});
       }
       var onLeave = data.onLeave;
       if (onLeave) {
-        var t;
         if (Match.test(onEnter, String)) {
-          t = globalTransitions[onLeave];
-          if (!t) {
+          transitionFn = globalTransitions[onLeave];
+          if (!transitionFn) {
             throw new Error('No global transition \''+onEnter+'\'. Known are ' + _.keys(globalTransitions));
           }
         }
         else {
           check(onLeave, Function);
-          t = onEnter;
+          transitionFn = onEnter;
         }
 
         this.preventDestroy();
         var destroy = _.bind(this.destroy, this);
 
         this.onDestroy = function() {
-          t(outer, function () {
+          transitionFn(outer, function () {
             destroy();
           });
         }
