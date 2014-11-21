@@ -1,0 +1,24 @@
+<head>
+    <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+</head>
+
+<template name="famousInit">
+  {{>Letter name='.'}}
+</template>
+
+<template name="Letter">
+  {{#Animate size='[200,200]' onMyEvent='turn.fast'}}
+    {{#Surface class='letter' properties=letterStyle}}
+      {{>Letter_content}}
+    {{/Surface}}
+  {{/Animate}}
+</template>
+
+<template name="Letter_content">
+    <span>
+      {{name}}
+    </span>
+    <div>
+        <button class='turn'>click</button>
+    </div>
+</template>
