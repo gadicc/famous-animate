@@ -14,8 +14,8 @@ Package.onUse(function (api) {
 	api.use('underscore@1.0.1');
   api.use('templating@1.0.7');
   api.use('blaze@2.0.1');
-  api.use('mjn:famous@0.3.0_5');
-  api.imply('mjn:famous@0.3.0_5');
+  api.use('mjn:famous@0.3.0_5', C, { weak: true });
+  api.use('raix:famono@0.9.23', C, { weak: true });
   api.use('gadicohen:famous-views@0.1.25',C);
   api.imply('gadicohen:famous-views@0.1.25');
 
