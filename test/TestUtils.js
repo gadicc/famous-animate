@@ -24,3 +24,22 @@ Meteor.startup(function() {
 		$('body').removeClass('famous-root');
 	}, 3000);
 });
+
+waitUntil = function (conditionsFn, successFn) {
+  check(conditionsFn, [Function]);
+  check(successFn, Function);
+
+  var handle = Meteor.setInterval(function () {
+    var ok = true;
+    _.each(conditionsFn, function (c) {
+      if (!c()) {
+        ok = false;
+      }
+    });
+
+    if (ok) {
+      Meteor.clearInterval(handle);
+      successFn();
+    }
+  }, 100);
+};
