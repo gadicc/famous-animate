@@ -24,6 +24,7 @@ echo "V: $version m: $minorVersion n:$newVersion"
 
 sed -i "s/version : \"$version\"/version: \"$newVersion\"/g" package.js
 
+git config credential.helper 'cache --timeout=30000'
 git commit -m "${msg}" -a
 git push
 
