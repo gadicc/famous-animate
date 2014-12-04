@@ -22,7 +22,7 @@ newVersion="$(echo ${version} | cut -d '.' -f 1-2).$(($minorVersion + 1))"
 
 echo "V: $version m: $minorVersion n:$newVersion"
 
-sed -i "s/version : \"$version\"/version : \"$newVersion\"/g" package.js
+sed -i "s/version : \"$version\"/version: \"$newVersion\"/g" package.js
 
 git commit -m "${msg}" -a
 git push
