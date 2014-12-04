@@ -1,13 +1,22 @@
-#! /bin/bash
+#! /bin/bash -e
 msg=$1; if [ -z "${msg}" ]; then echo "commit message mandatory"; exit 3; fi
 
+set +e
 spacejam test-packages ./
+spacejamExitCode=$?
+set -e
 
-echo "spacejam exitcode:$?"
+echo "spacejam exitcode:${spacejamExitCode}"
 
-if [ $(git status | grep -c "Untracked") = 1 ]; then git status; exit 3; fi
+if [[ ${spacejamExitCode} != 0 ]] ;then
+    exit ${spacejamExitCode}
+fi
 
-version=$(cat package.js | grep -Po 'version : "\K[^"]*')
+if [ $(git status | grep -c "Untracked") = 1 ]; then
+    git status; exit 3;
+fi
+
+version=$(cat package.js | grep -Po 'version: "\K[^"]*')
 minorVersion=$(echo ${version} | cut -d '.' -f 3)
 newVersion="$(echo ${version} | cut -d '.' -f 1-2).$(($minorVersion + 1))"
 
