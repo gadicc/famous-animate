@@ -23,7 +23,7 @@ Package.onUse(function (api) {
 });
 
 Package.onTest(function (api) {
-	api.use('mjn:famous-animate');
+	api.use('mjn:fview-animate');
   api.use('tinytest');
   api.use('test-helpers');
   api.use('templating');

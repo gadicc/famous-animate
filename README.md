@@ -1,4 +1,4 @@
-famous-animate
+fview-animate
 ==============
 
 Provides #Animate plugin for famo.us integration in meteor.

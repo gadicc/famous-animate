@@ -12,7 +12,7 @@ echo "V: $version m: $minorVersion n:$newVersion"
 
 sed -i "s/version : \"$version\"/version : \"$newVersion\"/g" package.js
 
-#spacejam -test-packages ./
+spacejam -test-packages ./
 git commit -m "${msg}" -a
 git push
 
