@@ -1,6 +1,6 @@
 Package.describe({
 	summary: 'provides #Animate view',
-	version: "0.0.14",
+	version: "0.0.15",
 	name: 'mjn:fview-animate',
 	git: 'https://github.com/mj-networks/famous-animate.git'
 });
@@ -14,7 +14,7 @@ Package.onUse(function (api) {
 	api.use('underscore@1.0.1');
 	api.use('templating@1.0.7');
 	api.use('blaze@2.0.1');
-	api.use('mjn:famous@0.3.0_5', C, {weak: true});
+	api.use('mjn:famous@0.3.2', C, {weak: true});
 	api.use('raix:famono@0.9.23', C, {weak: true});
 	api.use('gadicohen:famous-views@0.1.25', C);
 	api.imply('gadicohen:famous-views@0.1.25');
