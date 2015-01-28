@@ -66,15 +66,15 @@ FView.ready(function (require) {
       }
       var onLeave = data.onLeave;
       if (onLeave) {
-        if (Match.test(onEnter, String)) {
+        if (Match.test(onLeave, String)) {
           transitionFn = globalTransitions[onLeave];
           if (!transitionFn) {
-            throw new Error('No global transition \'' + onEnter + '\'. Known are ' + _.keys(globalTransitions));
+            throw new Error('No global transition \'' + onLeave + '\'. Known are ' + _.keys(globalTransitions));
           }
         }
         else {
           check(onLeave, Function);
-          transitionFn = onEnter;
+          transitionFn = onLeave;
         }
 
         this.preventDestroy();
